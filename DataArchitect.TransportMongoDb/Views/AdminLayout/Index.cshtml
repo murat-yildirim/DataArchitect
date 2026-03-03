@@ -1,0 +1,23 @@
+﻿@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+    @await Component.InvokeAsync("_AdminLayoutComponentPartial")
+    
+<body data-menu-color="light" data-sidebar="default">
+
+	<div id="app-layout">
+
+		@await Component.InvokeAsync("_AdminLayoutTabBarComponentPartial")
+
+		@await Component.InvokeAsync("_AdminLayoutSidebarComponentPartial")
+
+		@RenderBody()
+	
+	</div>
+	@await Component.InvokeAsync("_AdminLayoutScriptsComponentPartial")
+	
+</body>
+</html>

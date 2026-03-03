@@ -1,290 +1,57 @@
-﻿
-@{
-    Layout = null;
+﻿@{
+	Layout = null;
 }
 
 <!DOCTYPE html>
 <html lang="en">
 
 @await Component.InvokeAsync("_DefaultHeadComponentPartial")
+
 <body>
 
-    @await Component.InvokeAsync("_DefaultBoxBarComponentPartial")
+	@await Component.InvokeAsync("_DefaultBoxBarComponentPartial")
 
-    @await Component.InvokeAsync("_DefaultHeaderComponentPartial")
+	@await Component.InvokeAsync("_DefaultHeaderComponentPartial")
 
-    @await Component.InvokeAsync("_DefaultMobileMenuComponentPartial")
+	@await Component.InvokeAsync("_DefaultMobileMenuComponentPartial")
 
-    <main class="main">
-        @await Component.InvokeAsync("_DefaultSliderComponentPartial")
+	<main class="main">
+		@await Component.InvokeAsync("_DefaultSliderComponentPartial")
 
-        @await Component.InvokeAsync("_DefaultBrandComponentPartial")
+		@await Component.InvokeAsync("_DefaultBrandComponentPartial")
 
-        @await Component.InvokeAsync("_DefaultOfferComponentPartial")
+		@await Component.InvokeAsync("_DefaultOfferComponentPartial")
 
-        @await Component.InvokeAsync("_DefaultAboutComponentPartial")
+		@await Component.InvokeAsync("_DefaultAboutComponentPartial")
 
-        @await Component.InvokeAsync("_DefaultGetInTouchComponentPartial")
+		@await Component.InvokeAsync("_DefaultGetInTouchComponentPartial")
 
-        @await Component.InvokeAsync("_DefaultHowItWorksComponentPartial")
+		@await Component.InvokeAsync("_DefaultHowItWorksComponentPartial")
 
-        @await Component.InvokeAsync("_DefaultTestimonialComponentPartial")
+		@await Component.InvokeAsync("_DefaultTestimonialComponentPartial")
 
-        @await Component.InvokeAsync("_DefaultWhatWeHaveDoneComponentPartial")
-      
-       
-        
-       
-       
-       
-        
-       
-        <section class="section bg-leading-company pt-95">
-            <div class="box-bg-leading"></div>
-            <div class="container">
-                @await Component.InvokeAsync("_DefaultStatisticsComponentPartial")
+		@await Component.InvokeAsync("_DefaultWhatWeHaveDoneComponentPartial")
 
-                @await Component.InvokeAsync("_DefaultCalculateShippingComponentPartial")
-                
-            </div>
-        </section>
-        @await Component.InvokeAsync("_DefaultFrequentlyAskedQuestionsComponentPartial")
-       
-        <section class="section pt-70 pb-70 bg-get-quote">
-            <div class="container">
-                <div class="box-get-quote">
-                    <div class="get-quote-left">
-                        <p class="font-3xl color-white mb-10">Have any ideas in your mind?</p>
-                        <h2 class="color-brand-1">Create your next Project with Us</h2>
-                    </div>
-                    <div class="get-quote-right">
-                        <a class="btn btn-get-quote" href="request-a-quote.html">
-                            <svg class="mr-10" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z"> </path>
-                            </svg>GET A QUOTE
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="section mt-110">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-8 col-md-8">
-                        <h2 class="title-favicon mb-20">Latest News</h2>
-                        <p class="font-md color-grey-700">The latest information about shipping services and our promotions</p>
-                    </div>
-                    <div class="col-lg-4 col-md-4 text-end">
-                        <div class="box-button-sliders">
-                            <div class="swiper-button-prev swiper-button-prev-style-1 swiper-button-prev-customers">
-                                <svg fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"></path>
-                                </svg>
-                            </div>
-                            <div class="swiper-button-next swiper-button-next-style-1 swiper-button-next-customers">
-                                <svg fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt-60">
-                    <div class="box-swiper">
-                        <div class="swiper-container swiper-group-3-customers pb-50">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="card-blog-grid hover-up">
-                                        <div class="card-image"><a href="blog-sing.html"><img src="assets/imgs/page/homepage1/news1.png" alt="transp"></a><a class="btn btn-border-brand-1 mr-15" href="blog.html">Shipping</a></div>
-                                        <div class="card-info">
-                                            <a href="blog-sing.html">
-                                                <h5 class="color-brand-2">How to find reliable logistics company in China and Asia</h5>
-                                            </a>
-                                            <p class="font-sm color-grey-500 mt-20">Fusce dictum ullamcorper dui, id dignissim arcu volutpat vitae. Aenean mattis vestibulum odio eu facilisis. Aenean quam arcu, blandit at aliquet sit amet, convallis nec risus.</p>
-                                            <div class="line-border"></div>
-                                            <div class="mt-5 d-flex align-items-center justify-content-between pt-0">
-                                                <a class="btn btn-link font-sm color-brand-2" href="#">
-                                                    View Details<span>
-                                                        <svg class="w-6 h-6 icon-16" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                                                        </svg>
-                                                    </span>
-                                                </a><span class="date-post font-sm color-grey-700">29 May 2022</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="card-blog-grid hover-up">
-                                        <div class="card-image"><a href="blog-sing.html"><img src="assets/imgs/page/homepage1/news2.png" alt="transp"></a><a class="btn btn-border-brand-1 mr-15" href="blog.html">Shipping</a></div>
-                                        <div class="card-info">
-                                            <a href="blog-sing.html">
-                                                <h5 class="color-brand-2">How to find reliable logistics company in China and Asia</h5>
-                                            </a>
-                                            <p class="font-sm color-grey-500 mt-20">Fusce dictum ullamcorper dui, id dignissim arcu volutpat vitae. Aenean mattis vestibulum odio eu facilisis. Aenean quam arcu, blandit at aliquet sit amet, convallis nec risus.</p>
-                                            <div class="line-border"></div>
-                                            <div class="mt-5 d-flex align-items-center justify-content-between pt-0">
-                                                <a class="btn btn-link font-sm color-brand-2" href="#">
-                                                    View Details<span>
-                                                        <svg class="w-6 h-6 icon-16" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                                                        </svg>
-                                                    </span>
-                                                </a><span class="date-post font-sm color-grey-700">29 May 2022</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="card-blog-grid hover-up">
-                                        <div class="card-image"><a href="blog-sing.html"><img src="assets/imgs/page/homepage1/news3.png" alt="transp"></a><a class="btn btn-border-brand-1 mr-15" href="blog.html">Shipping</a></div>
-                                        <div class="card-info">
-                                            <a href="blog-sing.html">
-                                                <h5 class="color-brand-2">How to find reliable logistics company in China and Asia</h5>
-                                            </a>
-                                            <p class="font-sm color-grey-500 mt-20">Fusce dictum ullamcorper dui, id dignissim arcu volutpat vitae. Aenean mattis vestibulum odio eu facilisis. Aenean quam arcu, blandit at aliquet sit amet, convallis nec risus.</p>
-                                            <div class="line-border"></div>
-                                            <div class="mt-5 d-flex align-items-center justify-content-between pt-0">
-                                                <a class="btn btn-link font-sm color-brand-2" href="#">
-                                                    View Details<span>
-                                                        <svg class="w-6 h-6 icon-16" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                                                        </svg>
-                                                    </span>
-                                                </a><span class="date-post font-sm color-grey-700">29 May 2022</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <div class="section bg-map d-block">
-            <div class="container">
-                <div class="box-map">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3179.960389549842!2d-83.76408938441998!3d37.15364135542302!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x884352a00e70879f%3A0x1ad06ed33b7003c!2sIangar!5e0!3m2!1svi!2s!4v1678013229780!5m2!1svi!2s" height="420" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    <div class="map-info">
-                        <img class="mb-25" src="assets/imgs/template/logo.svg" alt="transp">
-                        <p class="color-grey-700 mb-25">4517 Washington Ave. Manchester, Kentucky 39495</p>
-                        <p class="color-grey-700 mb-10">
-                            <svg class="icon-16 mr-10 color-brand-1" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"></path>
-                            </svg>Phone: +01-246-357 (Any time 24/7)
-                        </p>
-                        <p class="color-grey-700 mb-30">
-                            <svg class="icon-16 mr-10 color-brand-1" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"></path>
-                            </svg>Email: contact@transp.eu.com
-                        </p>
-                        <div class="line-border mb-25"></div>
-                        <p class="color-grey-700 font-md-bold">Hours: 8:00 - 17:00, Mon - Sat</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-    <footer class="footer">
-        <div class="footer-1">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 width-23 mb-30">
-                        <div class="mb-20"><img src="assets/imgs/template/logo-footer.svg" alt="transp"></div>
-                        <p class="font-xs mb-20 color-white">We fuse our global network with our depth of expertise in air freight, ocean freight, railway transportation, trucking, and multimode transportation, also we are providing sourcing, warehousing, E-commercial fulfillment, and value-added service to our customers including kitting, assembly, customized package and business inserts, etc.</p>
-                        <h6 class="color-brand-1">Follow Us</h6>
-                        <div class="mt-15"><a class="icon-socials icon-facebook" href="#"></a><a class="icon-socials icon-instagram" href="#"></a><a class="icon-socials icon-twitter" href="#"></a><a class="icon-socials icon-youtube" href="#"></a><a class="icon-socials icon-skype" href="#"></a></div>
-                    </div>
-                    <div class="col-lg-3 width-16 mb-30">
-                        <h5 class="mb-10 color-brand-1">Company</h5>
-                        <ul class="menu-footer">
-                            <li><a href="about.html">Mission &amp; Vision</a></li>
-                            <li><a href="team.html">Our Team</a></li>
-                            <li><a href="career.html">Careers</a></li>
-                            <li><a href="#">Press &amp; Media</a></li>
-                            <li><a href="#">Advertising</a></li>
-                            <li><a href="#">Testimonials</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 width-16 mb-30">
-                        <h5 class="mb-10 color-brand-1">Industries</h5>
-                        <ul class="menu-footer">
-                            <li><a href="#">Global coverage</a></li>
-                            <li><a href="#">Distribution</a></li>
-                            <li><a href="#">Accounting Tools</a></li>
-                            <li><a href="#">Freight Recovery</a></li>
-                            <li><a href="#">Supply Chain</a></li>
-                            <li><a href="#">Warehousing</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 width-16 mb-30">
-                        <h5 class="mb-10 color-brand-1">Services</h5>
-                        <ul class="menu-footer">
-                            <li><a href="#">Air Freight</a></li>
-                            <li><a href="#">Ocean Freight</a></li>
-                            <li><a href="#">Railway Freight</a></li>
-                            <li><a href="#">Warehousing</a></li>
-                            <li><a href="#">Distribution</a></li>
-                            <li><a href="#">Value added</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 width-20 mb-30">
-                        <h5 class="mb-10 color-brand-1">Gallery</h5>
-                        <div class="galleries-footer">
-                            <ul class="list-imgs">
-                                <li> <img src="assets/imgs/page/homepage1/gal1.png" alt="transp"></li>
-                                <li> <img src="assets/imgs/page/homepage1/gal2.png" alt="transp"></li>
-                                <li> <img src="assets/imgs/page/homepage1/gal3.png" alt="transp"></li>
-                                <li> <img src="assets/imgs/page/homepage1/gal4.png" alt="transp"></li>
-                                <li> <img src="assets/imgs/page/homepage1/gal5.png" alt="transp"></li>
-                                <li> <img src="assets/imgs/page/homepage1/gal6.png" alt="transp"></li>
-                                <li> <img src="assets/imgs/page/homepage1/gal7.png" alt="transp"></li>
-                                <li> <img src="assets/imgs/page/homepage1/gal8.png" alt="transp"></li>
-                                <li> <img src="assets/imgs/page/homepage1/gal9.png" alt="transp"></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="footer-2">
-            <div class="container">
-                <div class="footer-bottom">
-                    <div class="row align-items-center">
-                        <div class="col-lg-6 col-md-12 text-center text-lg-start"><span class="color-grey-300 font-md">©Transp Official 2023. All right reversed.</span></div>
-                        <div class="col-lg-6 col-md-12 text-center text-lg-end">
-                            <ul class="menu-bottom">
-                                <li><a class="font-sm color-grey-300" href="term-conditions.html">Privacy policy</a></li>
-                                <li><a class="font-sm color-grey-300" href="term-conditions.html">Cookies</a></li>
-                                <li><a class="font-sm color-grey-300" href="term-conditions.html">Terms of service</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <script src="/templates/assets/js/vendors/modernizr-3.6.0.min.js"></script>
-    <script src="/templates/assets/js/vendors/jquery-3.6.0.min.js"></script>
-    <script src="/templates/assets/js/vendors/jquery-migrate-3.3.0.min.js"></script>
-    <script src="/templates/assets/js/vendors/bootstrap.bundle.min.js"></script>
-    <script src="/templates/assets/js/vendors/waypoints.js"></script>
-    <script src="/templates/assets/js/vendors/wow.js"></script>
-    <script src="/templates/assets/js/vendors/magnific-popup.js"></script>
-    <script src="/templates/assets/js/vendors/perfect-scrollbar.min.js"></script>
-    <script src="/templates/assets/js/vendors/select2.min.js"></script>
-    <script src="/templates/assets/js/vendors/isotope.js"></script>
-    <script src="/templates/assets/js/vendors/scrollup.js"></script>
-    <script src="/templates/assets/js/vendors/swiper-bundle.min.js"></script>
-    <script src="/templates/assets/js/vendors/noUISlider.js"></script>
-    <script src="/templates/assets/js/vendors/slider.js"></script>
-    <!-- Count down-->
-    <script src="/templates/assets/js/vendors/counterup.js"></script>
-    <script src="/templates/assets/js/vendors/jquery.countdown.min.js"></script>
-    <!-- Count down-->
-    <script src="/templates/assets/js/vendors/jquery.elevatezoom.js"></script>
-    <script src="/templates/assets/js/vendors/slick.js"></script>
-    <script src="/templates/assets/js/main.js?v=3.0.0"></script>
+		<section class="section bg-leading-company pt-95">
+			<div class="box-bg-leading"></div>
+			<div class="container">
+				@await Component.InvokeAsync("_DefaultStatisticsComponentPartial")
+
+				@await Component.InvokeAsync("_DefaultCalculateShippingComponentPartial")
+
+			</div>
+		</section>
+		@await Component.InvokeAsync("_DefaultFrequentlyAskedQuestionsComponentPartial")
+
+		@await Component.InvokeAsync("_DefaultGetQuoteComponentPartial")
+
+		@await Component.InvokeAsync("_DefaultContactComponentPartial")
+
+	</main>
+
+	@await Component.InvokeAsync("_DefaultFooterComponentPartial")
+
+	@await Component.InvokeAsync("_DefaultScriptsComponentPartial")
+
 </body>
 </html>

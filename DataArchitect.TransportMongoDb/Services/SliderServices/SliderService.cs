@@ -6,12 +6,12 @@ using MongoDB.Driver;
 
 namespace DataArchitect.TransportMongoDb.Services.SliderServices
 {
-    public class SliderServices : ISliderService
+    public class SliderService : ISliderService
     {
         private readonly IMongoCollection<Slider> _sliderCollection;
         private readonly IMapper _mapper;
 
-        public SliderServices(IMapper mapper, IDatabaseSettings _databaseSettings)
+        public SliderService(IMapper mapper, IDatabaseSettings _databaseSettings)
         {
             var client = new MongoClient(_databaseSettings.ConnectionString); //client değişken aracılığıyla mongodb bağlantısına erişim sağlandı
             var database = client.GetDatabase(_databaseSettings.DatabaseName);// database değişken aracılığıyla clienttaki bağlantı üzerinden veri tabanına erişiliyor

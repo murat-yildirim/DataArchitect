@@ -1,8 +1,888 @@
-﻿
+﻿@model CreateBrandDto
+
 @{
     ViewData["Title"] = "CreateBrand";
     Layout = "~/Views/AdminLayout/Index.cshtml";
 }
 
-<h1>CreateBrand</h1>
+<style>
+    @@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+    :root {
+        --bg: #f4f6f8;
+        --card: #ffffff;
+        --border: #e4e9ef;
+        --border-focus: #f97316;
+        --accent: #f97316;
+        --accent-bg: #fff7ed;
+        --accent-light: #fed7aa;
+        --accent-dark: #ea6c0b;
+        --text-h: #1a2332;
+        --text-body: #374151;
+        --text-sub: #6b7280;
+        --text-muted: #9ca3af;
+        --danger: #ef4444;
+        --success: #16a34a;
+        --success-bg: #f0fdf4;
+        --success-bdr: #bbf7d0;
+        --shadow: 0 1px 3px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.04);
+        --radius: 14px;
+        --radius-sm: 10px;
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    .cr-wrap {
+        font-family: 'Inter', sans-serif;
+        background: var(--bg);
+        min-height: 100%;
+        padding: 36px 40px 60px;
+    }
+
+    /* ── Page heading ── */
+    .cr-heading {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        margin-bottom: 32px;
+        animation: fadeUp .35s ease both;
+    }
+
+    .cr-heading-bar {
+        width: 4px;
+        height: 56px;
+        background: var(--accent);
+        border-radius: 4px;
+        flex-shrink: 0;
+        margin-top: 2px;
+    }
+
+    .cr-heading-text h1 {
+        font-size: 28px;
+        font-weight: 800;
+        color: var(--text-h);
+        letter-spacing: -0.5px;
+        line-height: 1.15;
+    }
+
+    .cr-heading-text p {
+        font-size: 14px;
+        color: var(--text-sub);
+        margin-top: 5px;
+        font-weight: 400;
+    }
+
+    /* ── Card ── */
+    .cr-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 36px 40px 40px;
+        animation: fadeUp .4s ease both;
+    }
+
+    /* ── Field block ── */
+    .cr-field-block {
+        margin-bottom: 28px;
+    }
+
+    .cr-field-label {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        margin-bottom: 10px;
+    }
+
+    .cr-field-icon {
+        width: 26px;
+        height: 26px;
+        background: var(--accent);
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+        .cr-field-icon span {
+            font-size: 11px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1;
+            letter-spacing: 0.2px;
+        }
+
+    .cr-field-label-text {
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--text-body);
+        text-transform: uppercase;
+        letter-spacing: 1.1px;
+    }
+
+    .cr-field-label-req {
+        color: var(--danger);
+        font-size: 14px;
+        margin-left: 1px;
+        line-height: 1;
+    }
+
+    /* ── Input ── */
+    .cr-input {
+        width: 100%;
+        height: 52px;
+        border: 1.5px solid var(--border);
+        border-radius: var(--radius-sm);
+        padding: 0 16px;
+        font-size: 15px;
+        font-family: 'Inter', sans-serif;
+        color: var(--text-body);
+        background: #fafbfc;
+        outline: none;
+        transition: border-color .2s, box-shadow .2s, background .2s;
+        caret-color: var(--accent);
+    }
+
+        .cr-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .cr-input:hover:not(:focus) {
+            border-color: #d1d5db;
+            background: #fff;
+        }
+
+        .cr-input:focus {
+            border-color: var(--border-focus);
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(249,115,22,.12);
+        }
+
+        .cr-input.err {
+            border-color: var(--danger);
+            box-shadow: 0 0 0 3px rgba(239,68,68,.1);
+        }
+
+    /* ── Counter ── */
+    .cr-meta-row {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 7px;
+    }
+
+    .cr-counter {
+        font-size: 12px;
+        color: var(--text-muted);
+        font-weight: 500;
+        font-variant-numeric: tabular-nums;
+        transition: color .2s;
+    }
+
+        .cr-counter.warn {
+            color: var(--danger);
+        }
+
+    /* ── Divider ── */
+    .cr-divider {
+        height: 1px;
+        background: var(--border);
+        margin: 4px 0 28px;
+    }
+
+    /* ── Image URL section ── */
+    .cr-url-wrap {
+        position: relative;
+    }
+
+        .cr-url-wrap .cr-input {
+            padding-right: 110px;
+        }
+
+    .cr-url-btn {
+        position: absolute;
+        right: 6px;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 40px;
+        padding: 0 16px;
+        background: var(--accent);
+        border: none;
+        border-radius: 7px;
+        color: #fff;
+        font-size: 12.5px;
+        font-weight: 700;
+        cursor: pointer;
+        font-family: 'Inter', sans-serif;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        transition: background .18s, box-shadow .18s;
+        white-space: nowrap;
+    }
+
+        .cr-url-btn:hover {
+            background: var(--accent-dark);
+            box-shadow: 0 3px 10px rgba(249,115,22,.35);
+        }
+
+    /* Preview chip */
+    .cr-preview-chip {
+        display: none;
+        align-items: center;
+        gap: 12px;
+        margin-top: 10px;
+        padding: 11px 14px;
+        background: var(--accent-bg);
+        border: 1px solid var(--accent-light);
+        border-radius: 10px;
+        animation: slideDown .25s ease;
+    }
+    @@keyframes slideDown {
+        from
+
+    {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    }
+
+    .cr-preview-chip.visible {
+        display: flex;
+    }
+
+    .cr-chip-thumb {
+        width: 64px;
+        height: 40px;
+        border-radius: 7px;
+        object-fit: contain;
+        background: #fff;
+        border: 1px solid var(--accent-light);
+        flex-shrink: 0;
+        padding: 4px;
+    }
+
+    .cr-chip-ph {
+        width: 64px;
+        height: 40px;
+        border-radius: 7px;
+        background: #fff7ed;
+        border: 1px solid var(--accent-light);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+    .cr-chip-info {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .cr-chip-url {
+        font-size: 12px;
+        color: var(--text-body);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-weight: 500;
+    }
+
+    .cr-chip-ok {
+        font-size: 11px;
+        color: var(--success);
+        margin-top: 3px;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        font-weight: 500;
+    }
+
+    .cr-chip-clear {
+        background: none;
+        border: none;
+        color: var(--text-muted);
+        cursor: pointer;
+        padding: 5px;
+        border-radius: 6px;
+        transition: color .15s, background .15s;
+        display: flex;
+    }
+
+        .cr-chip-clear:hover {
+            color: var(--danger);
+            background: #fef2f2;
+        }
+
+    /* ── Logo large preview ── */
+    .cr-logo-preview-wrap {
+        margin-top: 14px;
+        display: none;
+        animation: fadeUp .3s ease;
+    }
+
+        .cr-logo-preview-wrap.visible {
+            display: block;
+        }
+
+    .cr-logo-preview-label {
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        margin-bottom: 8px;
+    }
+
+    .cr-logo-preview-box {
+        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        border: 1.5px dashed var(--border);
+        border-radius: 12px;
+        height: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .cr-logo-preview-img {
+        max-width: 260px;
+        max-height: 90px;
+        object-fit: contain;
+        border-radius: 6px;
+        transition: opacity .4s;
+    }
+
+    .cr-logo-preview-ph {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        color: var(--text-muted);
+    }
+
+        .cr-logo-preview-ph svg {
+            width: 32px;
+            height: 32px;
+            stroke: var(--text-muted);
+            fill: none;
+            stroke-width: 1.5;
+            opacity: .5;
+        }
+
+        .cr-logo-preview-ph span {
+            font-size: 12px;
+            opacity: .6;
+        }
+
+    /* ── Status Toggle ── */
+    .cr-status-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 20px;
+        background: #fafbfc;
+        border: 1.5px solid var(--border);
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        transition: border-color .2s, background .2s;
+        user-select: none;
+    }
+
+        .cr-status-row:hover {
+            border-color: #d1d5db;
+            background: #fff;
+        }
+
+        .cr-status-row.active {
+            border-color: var(--accent-light);
+            background: var(--accent-bg);
+        }
+
+    .cr-status-left {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .cr-status-icon-wrap {
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+        background: #f3f4f6;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background .2s;
+        flex-shrink: 0;
+    }
+
+    .cr-status-row.active .cr-status-icon-wrap {
+        background: rgba(249,115,22,.15);
+    }
+
+    .cr-status-icon-wrap svg {
+        width: 18px;
+        height: 18px;
+        stroke: var(--text-muted);
+        fill: none;
+        stroke-width: 2;
+        transition: stroke .2s;
+    }
+
+    .cr-status-row.active .cr-status-icon-wrap svg {
+        stroke: var(--accent);
+    }
+
+    .cr-status-info {
+    }
+
+    .cr-status-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--text-body);
+    }
+
+    .cr-status-desc {
+        font-size: 12px;
+        color: var(--text-muted);
+        margin-top: 2px;
+    }
+
+    /* Pill toggle */
+    .cr-toggle {
+        width: 48px;
+        height: 26px;
+        background: #e5e7eb;
+        border-radius: 20px;
+        position: relative;
+        transition: background .25s ease;
+        flex-shrink: 0;
+    }
+
+        .cr-toggle::after {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #fff;
+            box-shadow: 0 1px 4px rgba(0,0,0,.2);
+            transition: transform .25s ease;
+        }
+
+    .cr-status-row.active .cr-toggle {
+        background: var(--accent);
+    }
+
+        .cr-status-row.active .cr-toggle::after {
+            transform: translateX(22px);
+        }
+
+    /* Hidden checkbox */
+    #IssStatus {
+        display: none;
+    }
+
+    /* ── Error ── */
+    .cr-err-msg {
+        display: none;
+        align-items: center;
+        gap: 5px;
+        font-size: 12px;
+        color: var(--danger);
+        margin-top: 6px;
+        font-weight: 500;
+    }
+
+        .cr-err-msg.show {
+            display: flex;
+        }
+
+    /* ── Hint ── */
+    .cr-hint {
+        font-size: 12px;
+        color: var(--text-muted);
+        margin-top: 7px;
+        line-height: 1.5;
+    }
+
+    /* ── Footer ── */
+    .cr-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 12px;
+        padding-top: 28px;
+        border-top: 1px solid var(--border);
+        gap: 12px;
+    }
+
+    .cr-footer-note {
+        font-size: 12.5px;
+        color: var(--text-muted);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+        .cr-footer-note svg {
+            width: 14px;
+            height: 14px;
+            stroke: var(--text-muted);
+            fill: none;
+            stroke-width: 2;
+        }
+
+        .cr-footer-note .req-star {
+            color: var(--danger);
+            font-size: 15px;
+        }
+
+    .cr-actions {
+        display: flex;
+        gap: 10px;
+    }
+
+    .btn-back {
+        height: 44px;
+        padding: 0 22px;
+        border: 1.5px solid var(--border);
+        border-radius: 10px;
+        background: #fff;
+        color: var(--text-sub);
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        font-family: 'Inter', sans-serif;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        transition: all .18s;
+    }
+
+        .btn-back:hover {
+            border-color: #c0c9d4;
+            color: var(--text-body);
+            background: #f9fafb;
+        }
+
+    .btn-save {
+        height: 44px;
+        padding: 0 28px;
+        border: none;
+        border-radius: 10px;
+        background: var(--accent);
+        color: #fff;
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+        font-family: 'Inter', sans-serif;
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        transition: background .18s, box-shadow .18s, transform .15s;
+        box-shadow: 0 4px 14px rgba(249,115,22,.32);
+        letter-spacing: 0.1px;
+    }
+
+        .btn-save:hover {
+            background: var(--accent-dark);
+            box-shadow: 0 6px 20px rgba(249,115,22,.42);
+            transform: translateY(-1px);
+        }
+
+        .btn-save:active {
+            transform: translateY(0);
+        }
+
+    @@keyframes fadeUp {
+        from
+
+    {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    }
+
+    @@media (max-width: 680px) {
+        .cr-wrap {
+            padding: 24px 20px 48px;
+        }
+
+        .cr-card {
+            padding: 24px 20px 28px;
+        }
+    }
+</style>
+
+<div class="cr-wrap">
+
+    <!-- Heading -->
+    <div class="cr-heading">
+        <div class="cr-heading-bar"></div>
+        <div class="cr-heading-text">
+            <h1>Yeni Marka Ekle</h1>
+            <p>Anlaşmalı markalar listesine yeni bir marka ekleyin</p>
+        </div>
+    </div>
+
+    <!-- Card -->
+    <div class="cr-card">
+        <form method="post" id="brandForm" asp-action="CreateBrand">
+            @Html.AntiForgeryToken()
+
+            <!-- Brand Name -->
+            <div class="cr-field-block">
+                <div class="cr-field-label">
+                    <div class="cr-field-icon"><span>B</span></div>
+                    <span class="cr-field-label-text">Marka Adı</span>
+                    <span class="cr-field-label-req">*</span>
+                </div>
+                <input class="cr-input" type="text" id="BrandName" name="BrandName"
+                       asp-for="BrandName"
+                       placeholder="Örn: DHL, FedEx, MNG Kargo..."
+                       maxlength="100"
+                       oninput="updateCounter(this,'cBrandName',100)" />
+                <div class="cr-meta-row">
+                    <span class="cr-counter" id="cBrandName">0 / 100</span>
+                </div>
+                <div class="cr-err-msg" id="errBrandName">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" /></svg>
+                    Marka adı zorunludur.
+                </div>
+            </div>
+
+            <div class="cr-divider"></div>
+
+            <!-- Image URL -->
+            <div class="cr-field-block">
+                <div class="cr-field-label">
+                    <div class="cr-field-icon"><span>I</span></div>
+                    <span class="cr-field-label-text">Logo URL</span>
+                    <span class="cr-field-label-req">*</span>
+                </div>
+
+                <div class="cr-url-wrap">
+                    <input class="cr-input" type="text" id="ImageUrlInput"
+                           placeholder="https://example.com/logo.png"
+                           oninput="onUrlInput(this)" />
+                    <input type="hidden" id="ImageUrl" name="ImageUrl" asp-for="ImageUrl" />
+                    <button type="button" class="cr-url-btn" onclick="applyUrl()">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+                        Önizle
+                    </button>
+                </div>
+
+                <!-- Small chip -->
+                <div class="cr-preview-chip" id="previewChip">
+                    <div class="cr-chip-ph" id="chipThumbWrap">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" /><circle cx="8.5" cy="8.5" r="1.5" /><path d="m21 15-5-5L5 21" /></svg>
+                    </div>
+                    <div class="cr-chip-info">
+                        <div class="cr-chip-url" id="chipUrlText"></div>
+                        <div class="cr-chip-ok">
+                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12" /></svg>
+                            Logo URL'si ayarlandı
+                        </div>
+                    </div>
+                    <button type="button" class="cr-chip-clear" onclick="clearUrl()">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
+                    </button>
+                </div>
+
+                <!-- Large logo preview -->
+                <div class="cr-logo-preview-wrap" id="logoPreviewWrap">
+                    <div class="cr-logo-preview-label">Logo Önizleme</div>
+                    <div class="cr-logo-preview-box">
+                        <img class="cr-logo-preview-img" id="logoPreviewImg" src="" alt="Logo" />
+                    </div>
+                </div>
+
+                <div class="cr-err-msg" id="errImage">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" /></svg>
+                    Logo URL'si zorunludur.
+                </div>
+                <p class="cr-hint">PNG veya SVG formatı tercih edilir — şeffaf arka planlı logolar daha iyi görünür.</p>
+            </div>
+
+            <div class="cr-divider"></div>
+
+            <!-- Status Toggle -->
+            <div class="cr-field-block">
+                <div class="cr-field-label">
+                    <div class="cr-field-icon"><span>S</span></div>
+                    <span class="cr-field-label-text">Durum</span>
+                </div>
+
+                <input type="hidden" id="IssStatus" name="IssStatus" asp-for="IssStatus" value="false" />
+
+                <div class="cr-status-row" id="statusRow" onclick="toggleStatus()">
+                    <div class="cr-status-left">
+                        <div class="cr-status-icon-wrap">
+                            <svg viewBox="0 0 24 24" id="statusIcon">
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="cr-status-info">
+                            <div class="cr-status-title" id="statusTitle">Pasif</div>
+                            <div class="cr-status-desc" id="statusDesc">Marka sitede görüntülenmeyecek</div>
+                        </div>
+                    </div>
+                    <div class="cr-toggle" id="toggleEl"></div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="cr-footer">
+                <div class="cr-footer-note">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><line x1="12" y1="16" x2="12" y2="12" /><line x1="12" y1="8" x2="12.01" y2="8" /></svg>
+                    <span class="req-star">*</span> ile işaretli alanlar zorunludur
+                </div>
+                <div class="cr-actions">
+                    <a href="/Admin/Brand" class="btn-back">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7" /></svg>
+                        Geri
+                    </a>
+                    <button type="submit" class="btn-save" onclick="return validate()">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" /><polyline points="17 21 17 13 7 13 7 21" /><polyline points="7 3 7 8 15 8" /></svg>
+                        Marka Kaydet
+                    </button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<script>
+    /* Counter */
+    function updateCounter(el, id, max) {
+        const c = document.getElementById(id);
+        const len = el.value.length;
+        c.textContent = len + ' / ' + max;
+        c.classList.toggle('warn', len > max * 0.9);
+    }
+
+    /* URL */
+    function onUrlInput(inp) {
+        if (!inp.value.trim()) clearUrl();
+    }
+
+    function applyUrl() {
+        const raw = document.getElementById('ImageUrlInput').value.trim();
+        if (!raw) return;
+        const full = raw.startsWith('http') ? raw : 'https://' + raw;
+
+        document.getElementById('ImageUrl').value = full;
+        document.getElementById('chipUrlText').textContent = full;
+        document.getElementById('previewChip').classList.add('visible');
+        document.getElementById('errImage').classList.remove('show');
+        document.getElementById('ImageUrlInput').classList.remove('err');
+
+        // Large preview
+        const previewWrap = document.getElementById('logoPreviewWrap');
+        const previewImg  = document.getElementById('logoPreviewImg');
+        previewImg.src = full;
+        previewImg.onload = function () {
+            previewWrap.classList.add('visible');
+            // Small chip thumb
+            const wrap = document.getElementById('chipThumbWrap');
+            wrap.innerHTML = '<img class="cr-chip-thumb" src="' + full + '" alt="" />';
+        };
+        previewImg.onerror = function () {
+            previewWrap.classList.remove('visible');
+        };
+    }
+
+    function clearUrl() {
+        document.getElementById('ImageUrl').value = '';
+        document.getElementById('ImageUrlInput').value = '';
+        document.getElementById('previewChip').classList.remove('visible');
+        document.getElementById('logoPreviewWrap').classList.remove('visible');
+        document.getElementById('logoPreviewImg').src = '';
+        document.getElementById('chipThumbWrap').innerHTML =
+            '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>';
+    }
+
+    /* Status toggle */
+    var statusActive = false;
+
+    function toggleStatus() {
+        statusActive = !statusActive;
+        const row    = document.getElementById('statusRow');
+        const title  = document.getElementById('statusTitle');
+        const desc   = document.getElementById('statusDesc');
+        const hidden = document.getElementById('IssStatus');
+
+        row.classList.toggle('active', statusActive);
+        hidden.value  = statusActive ? 'true' : 'false';
+        title.textContent = statusActive ? 'Aktif' : 'Pasif';
+        desc.textContent  = statusActive
+            ? 'Marka sitede görüntülenecek'
+            : 'Marka sitede görüntülenmeyecek';
+    }
+
+    /* Validation */
+    function validate() {
+        let ok = true;
+
+        function check(id, errId) {
+            const el  = document.getElementById(id);
+            const err = document.getElementById(errId);
+            if (!el.value.trim()) {
+                el.classList.add('err');
+                err.classList.add('show');
+                ok = false;
+            } else {
+                el.classList.remove('err');
+                err.classList.remove('show');
+            }
+        }
+
+        check('BrandName', 'errBrandName');
+
+        const imgUrl  = document.getElementById('ImageUrl').value;
+        const imgErr  = document.getElementById('errImage');
+        const imgInp  = document.getElementById('ImageUrlInput');
+        if (!imgUrl.trim()) {
+            imgInp.classList.add('err');
+            imgErr.classList.add('show');
+            ok = false;
+        } else {
+            imgInp.classList.remove('err');
+            imgErr.classList.remove('show');
+        }
+
+        return ok;
+    }
+
+    document.getElementById('BrandName').addEventListener('input', function () {
+        if (this.value.trim()) {
+            this.classList.remove('err');
+            document.getElementById('errBrandName').classList.remove('show');
+        }
+    });
+</script>
+
 

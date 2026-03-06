@@ -1,3 +1,4 @@
+using DataArchitect.TransportMongoDb.Services.BrandServices;
 using DataArchitect.TransportMongoDb.Services.SliderServices;
 using DataArchitect.TransportMongoDb.Settings;
 using Microsoft.Extensions.Options;
@@ -6,6 +7,7 @@ using System.Reflection;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<ISliderService, SliderService>();
+builder.Services.AddScoped<IBrandService, BrandService>();
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection("DatabaseSettingsKey"));

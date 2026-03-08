@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DataArchitect.TransportMongoDb.Dtos.BrandDtos;
+using DataArchitect.TransportMongoDb.Dtos.OfferDtos;
 using DataArchitect.TransportMongoDb.Dtos.SliderDtos;
 using DataArchitect.TransportMongoDb.Entities;
 
@@ -18,6 +19,11 @@ namespace DataArchitect.TransportMongoDb.Mapping
             CreateMap<Brand, CreateBrandDto>().ReverseMap();
             CreateMap<Brand, UpdateBrandDto>().ReverseMap();
             CreateMap<Brand, GetBrandByIdDto>().ReverseMap();
+
+            CreateMap<Offer, ResultOfferDto>().ReverseMap();
+            CreateMap<Offer, CreateOfferDto>().ReverseMap();
+            CreateMap<Offer, UpdateOfferDto>().ReverseMap();
+            CreateMap<Offer, GetOfferByIdDto>().ReverseMap();
 
         }
     }

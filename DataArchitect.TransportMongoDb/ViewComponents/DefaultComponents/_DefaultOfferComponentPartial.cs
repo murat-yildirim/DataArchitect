@@ -1,12 +1,21 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DataArchitect.TransportMongoDb.Services.OfferServices;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DataArchitect.TransportMongoDb.ViewComponents.DefaultComponents
 {
     public class _DefaultOfferComponentPartial : ViewComponent
     {
-        public IViewComponentResult Invoke()
+        private readonly IOfferService _OfferService;
+
+        public _DefaultOfferComponentPartial(IOfferService OfferService)
         {
-            return View();
+            _OfferService = OfferService;
+        }
+
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            var values = await _OfferService.GetAllOfferAsync();
+            return View(values);
         }
     }
 }

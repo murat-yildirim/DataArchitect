@@ -2,6 +2,7 @@
 using DataArchitect.TransportMongoDb.Dtos.AboutDtos;
 using DataArchitect.TransportMongoDb.Dtos.BrandDtos;
 using DataArchitect.TransportMongoDb.Dtos.GetInTouchDtos;
+using DataArchitect.TransportMongoDb.Dtos.HowItWorkDtos;
 using DataArchitect.TransportMongoDb.Dtos.OfferDtos;
 using DataArchitect.TransportMongoDb.Dtos.SliderDtos;
 using DataArchitect.TransportMongoDb.Entities;
@@ -36,6 +37,11 @@ namespace DataArchitect.TransportMongoDb.Mapping
             CreateMap<GetInTouch, UpdateGetInTouchDto>().ReverseMap();
             CreateMap<GetInTouch, CreateGetInTouchDto>().ReverseMap();
             CreateMap<GetInTouch, GetGetInTouchByIdDto>().ReverseMap();
+
+            CreateMap<HowItWork, ResultHowItWorkDto>().ReverseMap();
+            CreateMap<HowItWork, UpdateHowItWorkDto>().ReverseMap();
+            CreateMap<HowItWork, CreateHowItWorkDto>().ReverseMap();
+            CreateMap<HowItWork, GetHowItWorkByIdDto>().ReverseMap();
 
         }
     }

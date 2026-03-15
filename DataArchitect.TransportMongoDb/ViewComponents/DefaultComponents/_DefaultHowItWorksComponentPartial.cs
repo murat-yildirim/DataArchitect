@@ -1,12 +1,21 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DataArchitect.TransportMongoDb.Services.HowItWorkServices;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DataArchitect.TransportMongoDb.ViewComponents.DefaultComponents
 {
     public class _DefaultHowItWorksComponentPartial : ViewComponent
     {
-        public IViewComponentResult Invoke()
+        private readonly IHowItWorkService _HowItWorkService;
+
+        public _DefaultHowItWorksComponentPartial(IHowItWorkService HowItWorkService)
         {
-            return View();
+            _HowItWorkService = HowItWorkService;
+        }
+
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            var values = await _HowItWorkService.GetAllHowItWorkAsync();
+            return View(values);
         }
     }
 

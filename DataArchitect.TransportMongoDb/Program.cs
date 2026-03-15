@@ -1,5 +1,6 @@
 using DataArchitect.TransportMongoDb.Services.AboutServices;
 using DataArchitect.TransportMongoDb.Services.BrandServices;
+using DataArchitect.TransportMongoDb.Services.GetInTouchServices;
 using DataArchitect.TransportMongoDb.Services.OfferServices;
 using DataArchitect.TransportMongoDb.Services.SliderServices;
 using DataArchitect.TransportMongoDb.Settings;
@@ -12,6 +13,7 @@ builder.Services.AddScoped<ISliderService, SliderService>();
 builder.Services.AddScoped<IBrandService, BrandService>();
 builder.Services.AddScoped<IOfferService, OfferService>();
 builder.Services.AddScoped<IAboutService, AboutService>();
+builder.Services.AddScoped<IGetInTouchService, GetInTouchService>();
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection("DatabaseSettingsKey"));

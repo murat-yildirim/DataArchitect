@@ -11,6 +11,7 @@
         public string GetInTouchCollectionName { get; set; }
         public string HowItWorkCollectionName { get; set; }
         public string TestimonialCollectionName { get; set; }
+        public string ProjectSectionCollectionName { get; set; }
 
 
     }

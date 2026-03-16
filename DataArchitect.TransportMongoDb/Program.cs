@@ -1,8 +1,10 @@
+using DataArchitect.TransportMongoDb.Entities;
 using DataArchitect.TransportMongoDb.Services.AboutServices;
 using DataArchitect.TransportMongoDb.Services.BrandServices;
 using DataArchitect.TransportMongoDb.Services.GetInTouchServices;
 using DataArchitect.TransportMongoDb.Services.HowItWorkServices;
 using DataArchitect.TransportMongoDb.Services.OfferServices;
+using DataArchitect.TransportMongoDb.Services.ProjectSectionServices;
 using DataArchitect.TransportMongoDb.Services.SliderServices;
 using DataArchitect.TransportMongoDb.Services.TestimonialServices;
 using DataArchitect.TransportMongoDb.Settings;
@@ -18,6 +20,7 @@ builder.Services.AddScoped<IAboutService, AboutService>();
 builder.Services.AddScoped<IGetInTouchService, GetInTouchService>();
 builder.Services.AddScoped<IHowItWorkService, HowItWorkService>();
 builder.Services.AddScoped<ITestimonialService, TestimonialService>();
+builder.Services.AddScoped<IProjectSectionService, ProjectSectionService>();
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection("DatabaseSettingsKey"));

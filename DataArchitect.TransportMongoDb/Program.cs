@@ -4,6 +4,7 @@ using DataArchitect.TransportMongoDb.Services.GetInTouchServices;
 using DataArchitect.TransportMongoDb.Services.HowItWorkServices;
 using DataArchitect.TransportMongoDb.Services.OfferServices;
 using DataArchitect.TransportMongoDb.Services.SliderServices;
+using DataArchitect.TransportMongoDb.Services.TestimonialServices;
 using DataArchitect.TransportMongoDb.Settings;
 using Microsoft.Extensions.Options;
 using System.Reflection;
@@ -16,6 +17,7 @@ builder.Services.AddScoped<IOfferService, OfferService>();
 builder.Services.AddScoped<IAboutService, AboutService>();
 builder.Services.AddScoped<IGetInTouchService, GetInTouchService>();
 builder.Services.AddScoped<IHowItWorkService, HowItWorkService>();
+builder.Services.AddScoped<ITestimonialService, TestimonialService>();
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection("DatabaseSettingsKey"));

@@ -5,6 +5,7 @@ using DataArchitect.TransportMongoDb.Dtos.GetInTouchDtos;
 using DataArchitect.TransportMongoDb.Dtos.HowItWorkDtos;
 using DataArchitect.TransportMongoDb.Dtos.OfferDtos;
 using DataArchitect.TransportMongoDb.Dtos.SliderDtos;
+using DataArchitect.TransportMongoDb.Dtos.TestimonialDtos;
 using DataArchitect.TransportMongoDb.Entities;
 
 namespace DataArchitect.TransportMongoDb.Mapping
@@ -42,6 +43,11 @@ namespace DataArchitect.TransportMongoDb.Mapping
             CreateMap<HowItWork, UpdateHowItWorkDto>().ReverseMap();
             CreateMap<HowItWork, CreateHowItWorkDto>().ReverseMap();
             CreateMap<HowItWork, GetHowItWorkByIdDto>().ReverseMap();
+
+            CreateMap<Testimonial, ResultTestimonialDto>().ReverseMap();
+            CreateMap<Testimonial, UpdateTestimonialDto>().ReverseMap();
+            CreateMap<Testimonial, CreateTestimonialDto>().ReverseMap();
+            CreateMap<Testimonial, GetTestimonialByIdDto>().ReverseMap();
 
         }
     }

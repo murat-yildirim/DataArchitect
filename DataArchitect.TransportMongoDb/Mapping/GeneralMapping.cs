@@ -5,6 +5,7 @@ using DataArchitect.TransportMongoDb.Dtos.GetInTouchDtos;
 using DataArchitect.TransportMongoDb.Dtos.HowItWorkDtos;
 using DataArchitect.TransportMongoDb.Dtos.OfferDtos;
 using DataArchitect.TransportMongoDb.Dtos.ProjectSectionDtos;
+using DataArchitect.TransportMongoDb.Dtos.QuestionDtos;
 using DataArchitect.TransportMongoDb.Dtos.SliderDtos;
 using DataArchitect.TransportMongoDb.Dtos.TestimonialDtos;
 using DataArchitect.TransportMongoDb.Entities;
@@ -54,6 +55,11 @@ namespace DataArchitect.TransportMongoDb.Mapping
             CreateMap<ProjectSection, UpdateProjectSectionDto>().ReverseMap();
             CreateMap<ProjectSection, CreateProjectSectionDto>().ReverseMap();
             CreateMap<ProjectSection, GetProjectSectionByIdDto>().ReverseMap();
+
+            CreateMap<Question, ResultQuestionDto>().ReverseMap();
+            CreateMap<Question, UpdateQuestionDto>().ReverseMap();
+            CreateMap<Question, CreateQuestionDto>().ReverseMap();
+            CreateMap<Question, GetQuestionByIdDto>().ReverseMap();
 
         }
     }

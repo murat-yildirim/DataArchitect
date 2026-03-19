@@ -1,12 +1,21 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DataArchitect.TransportMongoDb.Services.QuestionServices;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DataArchitect.TransportMongoDb.ViewComponents.DefaultComponents
 {
     public class _DefaultFrequentlyAskedQuestionsComponentPartial : ViewComponent
     {
-        public IViewComponentResult Invoke()
+        private readonly IQuestionService _QuestionService;
+
+        public _DefaultFrequentlyAskedQuestionsComponentPartial(IQuestionService QuestionService)
         {
-            return View();
+            _QuestionService = QuestionService;
+        }
+
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            var values = await _QuestionService.GetAllQuestionAsync();
+            return View(values);
         }
     }
 }

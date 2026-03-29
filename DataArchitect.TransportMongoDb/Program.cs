@@ -7,6 +7,7 @@ using DataArchitect.TransportMongoDb.Services.OfferServices;
 using DataArchitect.TransportMongoDb.Services.ProjectSectionServices;
 using DataArchitect.TransportMongoDb.Services.QuestionServices;
 using DataArchitect.TransportMongoDb.Services.ShipmentServices;
+using DataArchitect.TransportMongoDb.Services.ShipmentTrackingServices;
 using DataArchitect.TransportMongoDb.Services.SliderServices;
 using DataArchitect.TransportMongoDb.Services.TestimonialServices;
 using DataArchitect.TransportMongoDb.Settings;
@@ -25,6 +26,7 @@ builder.Services.AddScoped<ITestimonialService, TestimonialService>();
 builder.Services.AddScoped<IProjectSectionService, ProjectSectionService>();
 builder.Services.AddScoped<IQuestionService, QuestionService>();
 builder.Services.AddScoped<IShipmentService, ShipmentService>();
+builder.Services.AddScoped<IShipmentTrackingService, ShipmentTrackingService>();
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection("DatabaseSettingsKey"));

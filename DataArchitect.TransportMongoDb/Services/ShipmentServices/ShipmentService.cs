@@ -46,5 +46,14 @@ namespace DataArchitect.TransportMongoDb.Services.ShipmentServices
             var values = _mapper.Map<Shipment>(updateShipmentDto);
             await _ShipmentCollection.FindOneAndReplaceAsync(x => x.ShipmentId == updateShipmentDto.ShipmentId, values);
         }
+
+        public async Task<GetShipmentByIdDto> GetShipmentByTrackingNumberAsync(string trackingNumber)
+        {
+            var value = await _ShipmentCollection
+                .Find(x => x.TrackingNumber == trackingNumber)
+                .FirstOrDefaultAsync();
+
+            return _mapper.Map<GetShipmentByIdDto>(value);
+        }
     }
 }

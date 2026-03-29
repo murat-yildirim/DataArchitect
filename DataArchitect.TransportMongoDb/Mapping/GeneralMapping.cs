@@ -7,6 +7,7 @@ using DataArchitect.TransportMongoDb.Dtos.OfferDtos;
 using DataArchitect.TransportMongoDb.Dtos.ProjectSectionDtos;
 using DataArchitect.TransportMongoDb.Dtos.QuestionDtos;
 using DataArchitect.TransportMongoDb.Dtos.ShipmentDtos;
+using DataArchitect.TransportMongoDb.Dtos.ShipmentTrackingDtos;
 using DataArchitect.TransportMongoDb.Dtos.SliderDtos;
 using DataArchitect.TransportMongoDb.Dtos.TestimonialDtos;
 using DataArchitect.TransportMongoDb.Entities;
@@ -66,6 +67,11 @@ namespace DataArchitect.TransportMongoDb.Mapping
             CreateMap<Shipment, CreateShipmentDto>().ReverseMap();
             CreateMap<Shipment, UpdateShipmentDto>().ReverseMap();
             CreateMap<Shipment, GetShipmentByIdDto>().ReverseMap();
+
+
+            CreateMap<ShipmentTracking, CreateShipmentTrackingDto>().ReverseMap();
+            CreateMap<ShipmentTracking, ResultShipmentTrackingDto>().ReverseMap();
+            CreateMap<ShipmentTracking, UpdateShipmentTrackingDto>().ReverseMap();
 
         }
     }

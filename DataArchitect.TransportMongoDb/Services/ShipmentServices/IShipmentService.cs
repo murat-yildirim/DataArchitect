@@ -1,4 +1,4 @@
-﻿using DataArchitect.TransportMongoDb.Dtos.ShipmentDtos;
+﻿        using DataArchitect.TransportMongoDb.Dtos.ShipmentDtos;
 
 namespace DataArchitect.TransportMongoDb.Services.ShipmentServices
 {
@@ -9,5 +9,6 @@ namespace DataArchitect.TransportMongoDb.Services.ShipmentServices
         Task UpdateShipmentAsync(UpdateShipmentDto updateShipmentDto);
         Task<GetShipmentByIdDto> GetShipmentByIdAsync(string id);
         Task DeleteShipmentAsync(string id);
+        Task<GetShipmentByIdDto> GetShipmentByTrackingNumberAsync(string trackingNumber);
     }
 }

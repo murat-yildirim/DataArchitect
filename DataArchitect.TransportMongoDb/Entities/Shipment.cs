@@ -18,8 +18,8 @@ namespace DataArchitect.TransportMongoDb.Entities
         public string Address { get; set; }
         public DateTime CreatedDate { get; set; }
         public string CurrentStatus { get; set; }
-  
 
-        public List<ShipmentTracking> Trackings { get; set; }
+
+        public List<ShipmentTracking> Trackings { get; set; } = new();
     }
 }
